@@ -2,10 +2,18 @@ package dev.aman.Singleton;
 
 public class Client {
     public static void main(String[] args) {
-        SingletonClass instance = SingletonClass.getInstance();
-        System.out.println(instance);
-        //Both instance and instance2 will point to same object
-        SingletonClass instance2 = SingletonClass.getInstance();
-        System.out.println(instance2);
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                //code to be implemented by thread
+                SingletonClass instance = SingletonClass.getInstance();
+                System.out.println(instance);
+            }
+        };
+
+        Thread threadOne = new Thread(runnable);
+        Thread threadTwo = new Thread(runnable);
+        threadOne.start();
+        threadTwo.start();
     }
 }
