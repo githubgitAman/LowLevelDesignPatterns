@@ -6,6 +6,12 @@ public class StudentHelper {
     private String email;
     private String batch;
 
+    //Creating method to get Student object
+    public Student build(){
+        //Passing current StudentHelper object ot Student object
+        return new Student(this);
+    }
+
     public String getFirstName() {
         return firstName;
     }
